@@ -3,8 +3,13 @@ import mediapipe as mp
 import time
 
 cap = cv2.VideoCapture("friends.mp4")
-
 pTime = 0 
+
+mpFaceDetect = mp.solutions.face_detection
+mpDraw = mp.solutions.drawing_utils
+
+faceDetection = mpFaceDetect.FaceDetection()
+
 while True:
     _, img = cap.read()
 
