@@ -13,6 +13,14 @@ faceDetection = mpFaceDetect.FaceDetection()
 while True:
     _, img = cap.read()
 
+    imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    results = faceDetection.process(imgRGB)
+    print(results)
+
+    if results.detections:
+        for idx,detection in enumerate(results.detections): 
+            print(id, ": ", detection)    
+
     cTime = time.time()
     fps = 1/(cTime - pTime)
     pTime = cTime
@@ -21,5 +29,5 @@ while True:
     
     cv2.imshow("Video", img)
 
-    if cv2.waitKey(20) == 27:
+    if cv2.waitKey(10) == 27:
         break
