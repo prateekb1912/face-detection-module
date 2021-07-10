@@ -15,19 +15,18 @@ while True:
 
     imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     results = faceDetection.process(imgRGB)
-    print(results)
 
     if results.detections:
-        for idx,detection in enumerate(results.detections): 
-            print(id, ": ", detection)    
+        for idx,detection in enumerate(results.detections):
+            
+            cv2.putText(img, f"{int(detection.score[0]*100)} %", (20, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 255, 0), 2)
+
 
     cTime = time.time()
     fps = 1/(cTime - pTime)
     pTime = cTime
-
-    cv2.putText(img, f"FPS: {int(fps)}", (20, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 255, 0), 2)
     
     cv2.imshow("Video", img)
 
-    if cv2.waitKey(10) == 27:
+    if cv2.waitKey(15) == 27:
         break
