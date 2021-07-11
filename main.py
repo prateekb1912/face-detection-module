@@ -1,14 +1,44 @@
 from FaceModule import FaceDetector
 import cv2
 import time
+import argparse
 
-cap = cv2.VideoCapture("friends.mp4")
+# Add command-line arguments parser
+parser = argparse.ArgumentParser(
+    description="Use the face detector module to use in your projects")
+
+parser.add_argument('--video', '-V',
+                    type = str, nargs = 1,
+                    help = "Input video to draw detected faces on, if skipped uses the webcam",
+                    default = 'webcam',
+                    required = False)
+
+parser.add_argument('--conf', '-C',
+                    type = float, nargs = 1,
+                    help = 'Minimum confidence required to draw faces on',
+                    default=0.85,
+                    required=False)
+
+args = vars(parser.parse_args())
+
+if args['video'] == 'webcam':
+    video = 0
+else:
+    video = args['video'][0]
+
+cap = cv2.VideoCapture(video)
 pTime = 0
 
-faceDetector = FaceDetector(min_detect_conf=0.85)
+if type(args['conf']) == list:
+    args['conf'] = args['conf'][0]
+
+faceDetector = FaceDetector(min_detect_conf = args['conf'])
 
 while True:
     _, img = cap.read()
+
+    if video == 1:
+        img = cv2.flip(img, 1)
 
     img = faceDetector.drawFaces(img)
 
