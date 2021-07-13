@@ -15,12 +15,12 @@ To test this on your videos or use the wecam, run the terminal from the cloned r
 -- conf / -C : Minimum confidence required to draw faces on (default = 0.5)
 ## Examples
 
-Here, I will show you some of the examples from a video I testes the file on from a variety of angles and poses.
+Here, I will show you some of the examples from a video I tested the file on from a variety of angles and poses.
 
-![](saved_images/smith0.jpg)
+![](friends.png)
 
-![](saved_images/smith1.jpg) 
+![](friends2.png)
 
-![](saved_images/smith2.jpg)
+![](friends3.png)
 
-![](saved_images/smith4.jpg)
+![](friends4.png)
