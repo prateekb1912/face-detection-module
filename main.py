@@ -16,7 +16,7 @@ parser.add_argument('--video', '-V',
 parser.add_argument('--conf', '-C',
                     type = float, nargs = 1,
                     help = 'Minimum confidence required to draw faces on',
-                    default=0.85,
+                    default=0.5,
                     required=False)
 
 args = vars(parser.parse_args())
